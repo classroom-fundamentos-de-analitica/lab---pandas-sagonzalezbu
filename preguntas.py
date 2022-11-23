@@ -51,8 +51,8 @@ def pregunta_03():
 
     """
     respuesta = tbl0.sort_values('_c1')
-    respuesta = respuesta['_c1'].value_counts(sort=False)
-    return pd.DataFrame(respuesta)
+    respuesta = respuesta.groupby('_c1')['_c1'].count()
+    return respuesta
 
 #print(pregunta_03())
 
