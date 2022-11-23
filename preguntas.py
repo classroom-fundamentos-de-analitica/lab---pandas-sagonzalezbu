@@ -165,7 +165,7 @@ def pregunta_09():
     """
     anio = tbl0['_c3'].str[:4]
     tbl0['year'] = anio[0]
-    return tbl0
+    return pd.DataFrame(tbl0)
 #print(pregunta_09())
 
 def pregunta_10():
@@ -185,7 +185,7 @@ def pregunta_10():
     
     respuesta = tbl0.groupby('_c1')['_c2'].apply(list)
     respuesta = respuesta.map(lambda v: ':'.join(sorted([str(x) for x in v])))
-    return respuesta
+    return pd.DataFrame(respuesta).reset_index()
 #print(pregunta_10())
 
   
@@ -208,7 +208,7 @@ def pregunta_11():
     """
     respuesta = tbl1.groupby('_c0')['_c4'].apply(list)
     respuesta = respuesta.map(lambda v: ','.join(sorted([str(x) for x in v])))
-    return respuesta
+    return pd.DataFrame(respuesta).reset_index()
 #print(pregunta_11())
 
 def pregunta_12():
@@ -230,9 +230,10 @@ def pregunta_12():
     tbl2['_c5'] = tbl2['_c5a'] + ':' +tbl2['_c5b']
     respuesta = tbl2.groupby('_c0')['_c5'].apply(list)
     respuesta = respuesta.map(lambda v: ','.join(sorted([str(x) for x in v])))
-    return respuesta
+    return pd.DataFrame(respuesta).reset_index()
 
 #print(pregunta_12())
+
 
 def pregunta_13():
     """
