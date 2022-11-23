@@ -52,7 +52,7 @@ def pregunta_03():
     """
     respuesta = tbl0.sort_values('_c1')
     respuesta = respuesta['_c1'].value_counts(sort=False)
-    return respuesta
+    return pd.DataFrame(respuesta)
 
 #print(pregunta_03())
 
@@ -164,9 +164,10 @@ def pregunta_09():
 
     """
     anio = tbl0['_c3'].str[:4]
-    tbl0['year'] = anio[0]
+    tbl0['year'] = tbl0['_c3'].str[:4]
     return pd.DataFrame(tbl0)
 #print(pregunta_09())
+
 
 def pregunta_10():
     """
@@ -185,10 +186,9 @@ def pregunta_10():
     
     respuesta = tbl0.groupby('_c1')['_c2'].apply(list)
     respuesta = respuesta.map(lambda v: ':'.join(sorted([str(x) for x in v])))
-    return pd.DataFrame(respuesta).reset_index()
+    return pd.DataFrame(respuesta)
 #print(pregunta_10())
 
-  
 
 def pregunta_11():
     """
